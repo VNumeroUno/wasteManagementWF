@@ -75,16 +75,9 @@
 			"priority": "MEDIUM",
 			"isHiddenInLogForParticipant": false,
 			"supportsForward": false,
-			"userInterface": "sapui5://comsapbpmworkflow.comsapbpmwusformplayer/com.sap.bpm.wus.form.player",
+			"userInterface": "sapui5://cprailinbox.wasteManagementworkflowuimodule/wasteManagement.workflowuimodule",
 			"recipientUsers": "${context.approvers}",
-			"formReference": "/forms/wasteManagementWF/wasteManagementForm.form",
-			"userInterfaceParams": [{
-				"key": "formId",
-				"value": "wastemanagementform"
-			}, {
-				"key": "formRevision",
-				"value": "1.0"
-			}],
+			"userInterfaceParams": [],
 			"id": "usertask1",
 			"name": "Waste Management"
 		},
