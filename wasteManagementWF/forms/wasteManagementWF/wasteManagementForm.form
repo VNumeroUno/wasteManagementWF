@@ -1,0 +1,112 @@
+{
+    "id": "wastemanagementform",
+    "schemaVersion": "1.1.0",
+    "name": "wasteManagementForm",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "start_date",
+            "type": "string",
+            "label": "Start Date",
+            "readOnly": true,
+            "value": "${context.startDate}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "end_date",
+            "type": "string",
+            "label": "End Date",
+            "readOnly": true,
+            "value": "${context.endDate}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "officelocation",
+            "type": "string",
+            "label": "OfficeLocation",
+            "readOnly": false,
+            "value": "${context.offliceLocation}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "courty_area_",
+            "type": "string",
+            "label": "Courty/Area for which you will be supplying data",
+            "readOnly": true,
+            "value": "${context.reportingCountry}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "amount_of_hazardous_waste_from_manufacturing_in_metric_tons_t_",
+            "type": "string",
+            "label": "Amount of hazardous waste from manufacturing in Metric tons (t)",
+            "readOnly": true,
+            "value": "${context.totalWastageFromManufacturing}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "percentage_recycled_in_percentage_",
+            "type": "string",
+            "label": "Percentage recycled in Percentage (%)",
+            "readOnly": true,
+            "value": "${context.totalRecycledWastage}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "approvers",
+            "type": "string",
+            "label": "Approvers",
+            "readOnly": true,
+            "value": "${context.approvers}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "comments",
+            "type": "string",
+            "label": "Comments",
+            "readOnly": true,
+            "value": "${context.comments}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "reporting_year",
+            "type": "string",
+            "label": "Reporting Year",
+            "readOnly": true,
+            "value": "${context.reportingYear}",
+            "constraints": {
+                "required": false
+            }
+        }
+    ],
+    "decisions": [
+        {
+            "id": "approve",
+            "text": "Approve",
+            "decisionType": "positive"
+        },
+        {
+            "id": "reject",
+            "text": "Reject",
+            "decisionType": "negative"
+        }
+    ]
+}
