@@ -1,3 +1,14 @@
 /mta_archives/
 /node_modules/
 /resources/
+workflow-ui-module/dist/Component-dbg.js
+.gitignore
+workflow-ui-module/dist/Component-preload.js
+workflow-ui-module/dist/Component.js
+workflow-ui-module/dist/wasteManagementworkflowuimodule.zip
+workflow-ui-module/dist/sap-ui-cachebuster-info.json
+workflow-ui-module/dist/i18n/i18n.properties
+.gitignore
+.gitignore
+workflow-ui-module/dist/resources/sap-ui-version.json
+workflow-ui-module/dist/view/wasteManagement.view.xml

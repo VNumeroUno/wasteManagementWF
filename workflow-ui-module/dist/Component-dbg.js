@@ -3,8 +3,22 @@ sap.ui.define(
     "sap/ui/core/UIComponent",
     "sap/ui/Device",
     "wasteManagement/workflowuimodule/model/models",
+    "sap/m/Dialog",
+    "sap/m/DialogType",
+    "sap/m/Button",
+    "sap/m/ButtonType",
+    "sap/m/Label",
+    "sap/m/MessageBox",
+    "sap/m/MessageToast",
+    "sap/m/Text",
+    "sap/m/TextArea",
+    "sap/ui/core/Core",
+    "sap/m/upload/UploadSet",
+    "sap/ui/core/Fragment",
+    "sap/ui/unified/FileUploaderParameter",
+    "sap/m/library",
   ],
-  function (UIComponent, Device, models) {
+  function (UIComponent, Device, models, Dialog, DialogType, Button, ButtonType, Label, MessageBox, MessageToast, Text, TextArea, Core, UploadSet, Fragment, FileUploaderParameter, MLibrary) {
     "use strict";
 
     return UIComponent.extend(
@@ -50,7 +64,8 @@ sap.ui.define(
               type: "reject", // (Optional property) Define for negative appearance
             },
             function () {
-              this.completeTask(false);
+              this.onShowActionDialog();
+              // this.completeTask(false);
             },
             this
           );
@@ -137,6 +152,89 @@ sap.ui.define(
         _refreshTaskList: function () {
           this.getInboxAPI().updateTask("NA", this.getTaskInstanceID());
         },
+
+        /**
+       * Handler for showing Action dialog .
+       * @public
+       */
+        onShowActionDialog: function () {
+          const oView = this.getRootControl();
+          this.getModel("context").setProperty("/comments", "");
+          let oTextArea = ""
+          if (!oView.byId("userActionDialog")) {
+            Fragment.load({
+              id: oView.getId(),
+              name: "wasteManagement.workflowuimodule.fragment.comments",
+              controller: this,
+            }).then(
+              function (oDialog) {
+                oView.addDependent(oDialog);
+                oTextArea = oDialog.getContent()[0].getContent()[1];
+                oTextArea.setValueState("None");
+                oTextArea.setValueStateText("");
+                oDialog.open();
+              }.bind(this)
+            );
+          } else {
+            oTextArea = oView.byId("userActionDialog").getContent()[0].getContent()[1];
+            oTextArea.setValueState("None");
+            oTextArea.setValueStateText("");
+            oView.byId("userActionDialog").open();
+          }
+        },
+
+        /**
+        * Handler for confirming Action dialog .
+        * @public
+        */
+        onConfirmUserActionDialog: function (oEvent) {
+          const oSource = oEvent.getSource();
+          const oDialog = oSource.getParent();
+          const sDialogTitle = oDialog.getTitle();
+          const oModel = this.getModel("context");
+          const oTextArea = oDialog.getContent()[0].getContent()[1];
+          let bFileUploaded = "";
+          // const oDetailSectionModel = this.getModel("DetailSection");
+          // const bSupportGroup = oDetailSectionModel.getProperty("/bSupportGroup");
+          let sMandatoryDocUpload = this.oI18n.getText("msgValueStateDocMandatoryField");
+          let sValueStateSpecialCharsMsg = this.oI18n.getText("msgValueStateSpecialChars");
+          let sValueStateMandatoryMsg = this.oI18n.getText("msgValueStateMandatoryFields");
+          oTextArea.setValueStateText("");
+          let regex = new RegExp(/[^A-Za-z0-9\-\_\.\,\$\s]/);
+          let bInValidComments = false;
+          // bInValidComments = regex.test(oTextArea.getValue());
+          if (!bInValidComments) {
+            oTextArea.setValueState("None");
+            oTextArea.setValueStateText("");
+            oModel.setProperty("/approverDecision", "REJECT");
+            oDialog.close();
+            let s1 = oModel.getProperty("/comments");
+            let sFormattedComments = btoa(s1);
+            oModel.setProperty("/comments", sFormattedComments);
+            this.completeTask(false);
+          } else {
+            oTextArea.setValueState("Error");
+            oTextArea.setValueStateText(sValueStateSpecialCharsMsg);
+          }
+        },
+        /**
+         * Handler to close Action dialog .
+         * @public
+         */
+        onCloseUserActionDialog: function (oEvent) {
+          this.getModel("context").setProperty("/comments", "");
+          oEvent.getSource().getParent().close();
+        },
+
+        /**
+                  * lifecycle, on after rendering
+                  * initialize resource bundle
+                  * @public
+                  */
+        onAfterRendering: function () {
+          this.oI18n = this.getModel("i18n").getResourceBundle();
+        },
+
       }
     );
   }

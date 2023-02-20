@@ -3,36 +3,53 @@
         <pages>
             <Page showHeader="false" showFooter="false">
                 <content>
-                    <Text class="sapUiTinyMarginTop" text="Select the Countries/Area will be supplying data: {context>/reportingCountry}" />
-                    <Text class="sapUiTinyMarginTop" text="Reporting Year: {context>/reportingYear}" />
-                    <Text class="sapUiTinyMarginTop" text="Start Date of Reporting Year: {context>/startDate}" />
-                    <Text class="sapUiTinyMarginTop" text="End Date of Reporting Year: {context>/endDate}" />
-                    <Text class="sapUiSmallMarginTop" text="Amount of hazardous waste from manufacturing in Metric tons: {context>/totalWastageFromManufacturing} (t)" />
-                    <Text class="sapUiTinyMarginTop" text="Percentage Recycled in Percentage:  {context>/totalRecycledWastage} (%)" />
-                    
-                    <HBox alignItems="Center" class="sapUiSmallMarginTop">
-                        <Text text="Data Owner: " />
-                        <Text class="sapUiTinyMarginBegin" text="{task>/CreatedByName}" />
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Select the Countries/Area will be supplying data: " />
+                        <Text text="{context>/reportingCountry}" />
                     </HBox>
-                    <HBox alignItems="Center" class="sapUiSmallMarginTop">
-                        <Text text="Additional Reporter: " />
-                        <Text class="sapUiTinyMarginBegin" text="Christopher Tam, Nidhideep Bhandari" />
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Reporting Year: " />
+                        <Text text="{context>/reportingYear}" />
                     </HBox>
-                    <HBox alignItems="Center" class="sapUiSmallMarginTop">
-                        <Text text="Reporting Country: " />
-                        <Text class="sapUiTinyMarginBegin" text="{context>/reportingCountry}" />
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Start Date of Reporting Year: " />
+                        <Text text="{context>/startDate}" />
                     </HBox>
-                    
-                    <HBox alignItems="Center" class="sapUiSmallMarginTop">
-                        <Text text="Comments: " />
-                        <TextArea rows="5" cols="100" value="{context>/Comments}" editable="true" class="sapUiTinyMarginBegin" />
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="End Date of Reporting Year: " />
+                        <Text text="{context>/endDate}" />
                     </HBox>
-                    <HBox alignItems="Center" class="sapUiSmallMarginTop">
-                        <Text text="To be approved by: " />
-                        <Text class="sapUiTinyMarginBegin" text="{context>/approvers}" />
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Amount of hazardous waste from manufacturing in Metric tons: " />
+                        <Text text="{context>/totalWastageFromManufacturing}" />
+                    </HBox>
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Percentage Recycled in Percentage: " />
+                        <Text text="{context>/totalRecycledWastage}" />
+                    </HBox>
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Data Owner: " />
+                        <Text text="{task>/CreatedByName}" />
+                    </HBox>
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Additional Reporter: " />
+                        <Text text="Christopher Tam, Nidhideep Bhandari" />
+                    </HBox>
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Reporting Country: " />
+                        <Text text="{context>/reportingCountry}" />
                     </HBox>
 
-                    <Button text="Download Attachment" icon="sap-icon://download" class="sapUiSmallMarginTop" />
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="Comments: " />
+                        <TextArea rows="5" cols="100" value="{context>/Comments}" editable="true"/>
+                    </HBox>
+                    <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Text class="sapUiSmallMarginEnd" text="To be approved by: " />
+                        <Text text="{context>/approvers}" />
+                    </HBox>
+
+                    <Button text="Download Attachment" icon="sap-icon://download" class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiSmallMarginEnd" />
                 </content>
             </Page>
         </pages>

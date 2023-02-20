@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+    <Dialog id="userActionDialog" class="sapUiSizeCompact" busy="false"  contentWidth="500px" title="{i18n>labelAddComments}" busyIndicatorDelay="0">
+        <content>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"  adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                <f:content>
+                   <Label text="{i18n>labelAddComments} " required="true" />
+                   <TextArea  value="{context>/comments}" width="100%" valueState="{=${context>/comments} ? 'None':'Error'}"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="{i18n>labelBtnOK}" type="Emphasized" press=".onConfirmUserActionDialog"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>labelBtnCancel}" press=".onCloseUserActionDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
