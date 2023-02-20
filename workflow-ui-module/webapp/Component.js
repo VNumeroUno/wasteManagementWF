@@ -64,8 +64,8 @@ sap.ui.define(
               type: "reject", // (Optional property) Define for negative appearance
             },
             function () {
-              this.onShowActionDialog();
-              // this.completeTask(false);
+              // this.onShowActionDialog();
+              this.completeTask(false);
             },
             this
           );
